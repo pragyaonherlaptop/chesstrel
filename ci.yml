@@ -1,0 +1,22 @@
+name: build-and-test
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build
+        run: make
+
+      - name: Move generation tests (perft + hash checks)
+        run: ./chesstrel test
+
+      - name: UCI smoke test
+        run: |
+          printf 'uci\nisready\nposition startpos moves e2e4 e7e5\ngo depth 6\n' | ./chesstrel | tee out.txt
+          grep -q "uciok" out.txt
+          grep -q "readyok" out.txt
+          grep -q "bestmove" out.txt
