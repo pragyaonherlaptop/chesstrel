@@ -1,0 +1,6 @@
+chesstrel
+chesstrel.exe
+build/
+*.o
+.vscode/
+.idea/
