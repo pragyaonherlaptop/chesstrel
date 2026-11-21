@@ -12,7 +12,7 @@
 #include <thread>
 
 #define ENGINE_NAME "Chesstrel 0.1"
-#define ENGINE_AUTHOR "your-name-here"   // TODO: put your name
+#define ENGINE_AUTHOR "Pragya"   // TODO: put your name
 
 namespace {
 std::mutex g_outMutex;
